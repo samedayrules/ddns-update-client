@@ -59,7 +59,7 @@ To make a shortcut to the DUC that can then be executed at startup:
 1. Right-click on your Windows desktop, and choose `New > Shortcut`.
 2. Browse to the location where the Python DUC application resides.
 3. Then browse further to the `venv\Scripts` directory and select the `pythonw.exe` application.
-4. Click 'Next` in the `Create Shortcut` dialog box.
+4. Click `Next` in the `Create Shortcut` dialog box.
 5. Type a name for the new shortcut, and then select `Finish`.
 6. On your Windows desktop, right-click the new shortcut that you just made and select `Properties`.
 7. In the `Target` field, append the full path to the DDNS DUC Python application.
