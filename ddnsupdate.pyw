@@ -23,7 +23,7 @@ CONFIG_FILENAME = 'ddnsupdate.cfg'
 # Prevent Kivy leaving debug messages
 # https://stackoverflow.com/questions/50308757/prevent-kivy-leaving-debug-messages
 import os
-#os.environ['KIVY_NO_CONSOLELOG'] = '1'
+os.environ['KIVY_NO_CONSOLELOG'] = '1'
 
 # How to change [Kivy] window size
 # https://stackoverflow.com/questions/14014955/kivy-how-to-change-window-size
