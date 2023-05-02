@@ -1,0 +1,279 @@
+# Filename: dnsupdate.kv
+
+<Check@MDCheckbox>:
+    group: 'ip_address'
+    size_hint: None, None
+    size: dp(36), dp(36)
+
+MDScreen:
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.10
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    # GridLayout ignores its children's size_hint_x and width when cols is set.
+    MDGridLayout:
+        cols: 1
+        padding: ['10dp', '10dp', '10dp', '10dp']
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '30dp'
+        
+            MDLabel:
+                font_size: '12sp'
+                padding: '5dp'
+                text: 'USER INFORMATION'
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '50dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [10, 10, 0, 0] # top-left, top-right, bottom-right, bottom-left
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Username'
+                size_hint_x: None
+                width: '100dp'
+                pos_hint: {'center_y': .575}
+                
+            MDTextField:
+                id: user_name
+                font_size: '15sp'
+                multiline: False
+                max_text_length: 60
+                helper_text_mode: 'on_error'
+                helper_text: 'This field is required'
+                write_tab: False
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '60dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [0, 0, 10, 10]
+            padding: [0, 0, 0, 10] # left, top, right, bottom
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Access Key'
+                size_hint_x: None
+                width: '100dp'
+                pos_hint: {'center_y': .575}
+
+            MDTextField:
+                id: access_key
+                font_size: '15sp'
+                multiline: False
+                max_text_length: 32
+                helper_text_mode: 'on_error'
+                helper_text: 'This field is required'
+                write_tab: False
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '10dp'
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '30dp'
+
+            MDLabel:
+                font_size: '12sp'
+                padding: '5dp'
+                text: 'ADDRESS INFORMATION'
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '40dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [10, 10, 0, 0] # top-left, top-right, bottom-right, bottom-left
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Public IP'
+                size_hint_x: None
+                width: '100dp'
+
+            MDLabel:
+                id: public_ip_address
+                font_size: '15sp'
+                theme_text_color: 'Hint'
+                text: '68.40.231.89'
+
+            Check:
+                id: public_ip_address_active
+                active: True
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            md_bg_color: 1, 1, 1, 1
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Local IP'
+                size_hint_x: None
+                width: '100dp'
+
+            MDLabel:
+                id: local_ip_address
+                font_size: '15sp'
+                theme_text_color: 'Hint'
+                text: '192.168.1.1'
+
+            Check:
+                id: local_ip_address_active
+                active: False
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '60dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [0, 0, 10, 10]
+            padding: [0, 0, 0, 10]
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Other IP'
+                size_hint_x: None
+                width: '100dp'
+                pos_hint: {'center_y': .575}
+
+            MDTextField:
+                id: other_ip_address
+                font_size: '15sp'
+                multinline: False
+                max_text_length: 64
+                write_tab: False
+
+            Check:
+                id: other_ip_address_active
+                active: False
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '10dp'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '30dp'
+
+            MDLabel:
+                font_size: '12sp'
+                padding: '5dp'
+                text: 'UPDATE INFORMATION'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '50dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [10, 10, 0, 0] # top-left, top-right, bottom-right, bottom-left
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Hostname'
+                size_hint_x: None
+                width: '100dp'
+                pos_hint: {'center_y': .575}
+
+            MDTextField:
+                id: hostname
+                font_size: '15sp'
+                multiline: False
+                max_text_length: 255
+                helper_text_mode: 'on_error'
+                helper_text: 'This field is required'
+                write_tab: False
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '60dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [0, 0, 10, 10]
+            padding: [0, 0, 0, 10] # left, top, right, bottom
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Update (sec)'
+                size_hint_x: None
+                width: '100dp'
+                pos_hint: {'center_y': .575}
+
+            MDTextField:
+                id: update_period
+                font_size: '15sp'
+                multiline: False
+                max_text_length: 5
+                helper_text_mode: 'on_error'
+                helper_text: 'This field is required'
+                write_tab: False
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '10dp'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '30dp'
+
+            MDLabel:
+                font_size: '12sp'
+                padding: '5dp'
+                text: 'DDNS SERVER STATUS'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [10, 10, 0, 0] # top-left, top-right, bottom-right, bottom-left
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Updated'
+                size_hint_x: None
+                width: '100dp'
+
+            MDLabel:
+                id: last_srv_update
+                font_size: '15sp'
+                theme_text_color: 'Secondary'
+                text: '...'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '40dp'
+            md_bg_color: 1, 1, 1, 1
+            radius: [0, 0, 10, 10]
+            padding: [0, 0, 0, 10] # left, top, right, bottom
+
+            MDLabel:
+                font_size: '15sp'
+                text: ' Status'
+                size_hint_x: None
+                width: '100dp'
+
+            MDLabel:
+                id: last_srv_status
+                font_size: '15sp'
+                theme_text_color: 'Secondary'
+                text: '...'
+
+        MDBoxLayout: 
+            size_hint_y: None
+            height: '10dp'
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: '60dp'
+
+            MDAnchorLayout:
+
+                MDFillRoundFlatButton:
+                    id: apply_button
+                    md_bg_color: [74/255, 122/255, 255/255, 1.0]
+                    text: 'Apply'
+                    size_hint: (1.0, 0.80)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
