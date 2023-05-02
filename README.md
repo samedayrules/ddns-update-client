@@ -52,7 +52,7 @@ To run the software, simply execute the script:
 
 `(venv) C:>python ddnsupdate.pyw`
 
-The Python application does not create a console when executed, so you should not see one created when the program is launched.
+The Python application does not create a console window when executed, so you should not see one created when the program is launched.
 
 ## Using PyInstaller
 
