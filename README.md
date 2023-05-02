@@ -52,7 +52,7 @@ To run the software, simply execute the script:
 
 `(venv) C:>python ddnsupdate.pyw`
 
-The Python application does not create a console window when executed, so you should not see one created when the program is launched.
+The Python application does not output anything to the console window when executed nor does it create a console window when launched.
 
 To make a shortcut to the DUC that can then be executed at startup:
 
@@ -62,7 +62,7 @@ To make a shortcut to the DUC that can then be executed at startup:
 4. Click `Next` in the `Create Shortcut` dialog box.
 5. Type a name for the new shortcut, and then select `Finish`.
 6. On your Windows desktop, right-click the new shortcut that you just made and select `Properties`.
-7. In the `Target` field, append the full path to the DDNS DUC Python application.
+7. In the `Target` field, append the full path to the Python DUC application.
 8. Select `Ok` in the shortcut properties dialog box.
 
 The command in the `Target` field above should look something like this:
