@@ -65,6 +65,12 @@ To make a shortcut to the DUC that can then be executed at startup:
 7. In the `Target` field, append the full path to the DDNS DUC Python application.
 8. Select `Ok` in the shortcut properties dialog box.
 
+The command in the `Target` field above should look something like this:
+
+`C:\Users\me\Documents\Python\ddns_update_client\venv\Scripts\pythonw.exe C:\Users\me\Documents\Python\ddns_update_client\ddnsupdate.pyw`
+
+And, you should now be able to launch the DUC from your desktop by double-clicking the shortcut icon.
+
 ## Using PyInstaller
 
 https://pyinstaller.org/en/stable/usage.html#using-pyinstaller
