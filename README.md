@@ -52,7 +52,7 @@ To run the software, simply execute the script:
 
 `(venv) C:>python ddnsupdate.pyw`
 
-The Python application does not output anything to the console window when executed nor does it create a console window when launched.
+The Python DUC application does not output anything to the console window when executed nor does it create a console window when launched.
 
 To make a shortcut to the DUC that can then be executed at startup:
 
@@ -67,9 +67,9 @@ To make a shortcut to the DUC that can then be executed at startup:
 
 The command in the `Target` field above should look something like this:
 
-`C:\Users\me\Documents\Python\ddns_update_client\venv\Scripts\pythonw.exe C:\Users\me\Documents\Python\ddns_update_client\ddnsupdate.pyw`
+`C:\Users\me\ddns_update_client\venv\Scripts\pythonw.exe C:\Users\me\ddns_update_client\ddnsupdate.pyw`
 
-And, you should now be able to launch the DUC from your desktop by double-clicking the shortcut icon.
+And, you should now be able to launch the DUC from your desktop by double-clicking the shortcut icon. To run the Python DUC application at startup, when you login into Windows, copy the shortcut to your `Startup` directory (or follow [these directions](https://www.dell.com/support/kbdoc/en-us/000124550/how-to-add-app-to-startup-in-windows-10) to copy it to your Windows 10 startup area).
 
 ## Using PyInstaller
 
