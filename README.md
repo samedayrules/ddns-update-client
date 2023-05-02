@@ -1,6 +1,6 @@
 # Dynamic DNS Update Client (DUC)
 
-This repository holds software for the Dynamic Domain Name System (DDNS) Update Client (DUC) that is used to configure and start dynamic updates of hostnames and their associated IP addresses, and that is integrated with the [DDNS service provided by Same Day Rules](https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-service/).
+This repository holds software for the Dynamic Domain Name System (DDNS) Update Client (DUC) that is used to configure and start dynamic updates of hostnames and their associated IP addresses. The update client is integrated with the [DDNS service provided by Same Day Rules](https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-service/).
 
 DDNS services allow users to create customized names that can be used to access home network resources using standard URL's from the Internet. With DDNS, a user can create a custom domain name (e.g., myiot.samedayrules.net) that is associated with the IP address of their home network gateway (e.g., broadband cable modem). If the IP address of the home network gateway changes, special software running on the home network updates the customized name to point to the new IP address so that the customized name remains current. The special software running on the home network is called a DDNS Update Client or DUC, and that software is held in this repository.
 
