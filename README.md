@@ -25,11 +25,20 @@ Developers seeking to install and extend the Same Day Rules DUC can follow the i
 To modify and run the DUC software, you must have:
 
 1. Python installed (version 3.11 used).
-2. Git installed (version 2.38.1 used)
+2. Git installed (version 2.38.1 used).
 3. Access to a command shell (e.g., cmd.exe).
 
-1. Open Windows comman prompt.
-2. 
+The general process is:
+
+1. Open Windows command prompt.
+2. Clone the software repository.
+3. Make a Python virtual environment.
+4. Install the required Python modules.
+5. Run the software, either as-needed or upon startup each time you login.
+
+Assuming you have opened a Windows command prompt:
+
+`c:\users\myuser\mydir`
 
 ## Using PyInstaller
 
