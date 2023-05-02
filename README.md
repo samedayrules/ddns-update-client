@@ -2,7 +2,7 @@
 
 ## Audience
 
-This repository is for **developers** who would like to extend the DDNS Update Client offered by Same Day Rules. Same Day Rules **customers** would not normally need access to the source code underlying the DDNS Update Client operation; they would instead download and install the update client from the [Same Day Rules website](https://samedayrules.com/) for the operating system of their choice.
+This repository is for **developers** who would like to extend the Dynamic DNS Update Client offered by Same Day Rules. Same Day Rules **customers** would not normally need access to the source code underlying the DDNS Update Client operation; they would instead download and install the update client from the [Same Day Rules website](https://samedayrules.com/) for the operating system of their choice.
 
 ## Overview
 
