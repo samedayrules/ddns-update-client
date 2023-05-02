@@ -44,7 +44,7 @@ Assuming you have opened a Windows command prompt and you have navigated to your
 `C:>cd ddns_update_client`<br>
 `C:>virtualenv venv`<br>
 `C:>venv\Scripts\activate`<br>
-'(venv) C:>pip install -r requirements.txt`
+`(venv) C:>pip install -r requirements.txt`
 
 You should have the most recent copy of the DUC software within the target virtual ebvironment on your machine.
 
