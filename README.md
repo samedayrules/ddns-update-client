@@ -6,6 +6,10 @@ DDNS services allow users to create customized names that can be used to access 
 
 The DDNS Update Client (DUC) interacts with a DDNS server to propagate changes in IP address settings to names held in the Internet Domain Name System. The Same Day Rules DUC interacts with the Same Day Rules DDNS server at **ht<span>tps://</span>samedayrules.net** using a standard DDNS API that is compatible with the [Dyn DNS standard](https://help.dyn.com/remote-access-api/).
 
+## KivyMD Application
+
+The Same Day Rules DUC is provided as a Python [KivyMD](https://kivymd.readthedocs.io/en/1.1.1/) application that is packaged using PyInstaller for use of multiple platforms (i.e., Windows, Linux, Mac OS).
+
 ## Using PyInstaller
 
 https://pyinstaller.org/en/stable/usage.html#using-pyinstaller
