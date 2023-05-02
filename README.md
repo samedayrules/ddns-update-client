@@ -40,10 +40,10 @@ The general process is:
 
 Assuming you have opened a Windows command prompt and you have navigated to your development directory:
 
-`C:>git clone https://github.com/samedayrules/ddns_update_client.git`
-`C:>cd ddns_update_client`
-`C:>virtualenv venv`
-`C:>venv\Scripts\activate`
+`C:>git clone https://github.com/samedayrules/ddns_update_client.git`<br>
+`C:>cd ddns_update_client`<br>
+`C:>virtualenv venv`<br>
+`C:>venv\Scripts\activate`<br>
 '(venv) C:>pip install -r requirements.txt`
 
 You should have the most recent copy of the DUC software within the target virtual ebvironment on your machine.
