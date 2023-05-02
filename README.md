@@ -10,7 +10,7 @@ Users can subscribe to the Same Day Rules DDNS Service at our [storefront](https
 
 ## KivyMD Application
 
-The Same Day Rules DUC is provided as a Python [KivyMD](https://kivymd.readthedocs.io/en/1.1.1/) application that is packaged using [PyInstaller](https://pyinstaller.org/en/stable/) for use of multiple platforms (i.e., Windows, Linux, Mac OS).
+The Same Day Rules DUC is provided as a Python [KivyMD](https://kivymd.readthedocs.io/en/1.1.1/) application that is packaged using [PyInstaller](https://pyinstaller.org/en/stable/) for use on multiple platforms (i.e., Windows, Linux, Mac OS).
 
 ## Using PyInstaller
 
