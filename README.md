@@ -109,5 +109,5 @@ To produce a single executeable **file** that is decompressed and run in-place:
 
 To create a single **folder** where the executeable Python program will be stored:
 
-`pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+`pyinstaller --onedir --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
