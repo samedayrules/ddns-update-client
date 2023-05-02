@@ -46,7 +46,7 @@ Assuming you have opened a Windows command prompt and you have navigated to your
 `C:>venv\Scripts\activate`<br>
 `(venv) C:>pip install -r requirements.txt`
 
-You should have the most recent copy of the DUC software within the target virtual ebvironment on your machine.
+You should have the most recent copy of the DUC software within the target virtual environment on your machine.
 
 To run the software, simply execute the script:
 
