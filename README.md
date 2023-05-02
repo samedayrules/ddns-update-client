@@ -73,6 +73,8 @@ And, you should now be able to launch the DUC from your desktop by double-clicki
 
 ## Using PyInstaller
 
+For developers interested in creating a Python executable that can be shared with other users (who don't necessarily have a Python development environment), you can use the PyInstaller application. Below are various resources that desctribe how to do that.
+
 https://pyinstaller.org/en/stable/usage.html#using-pyinstaller
 
 ### Supporting Multiple Python Environments
