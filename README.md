@@ -103,4 +103,11 @@ https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
 ### Command to Create Onefile Distrubution
 
-pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw
+To produce a single executeable **file** that is decompressed and run in-place:
+
+`pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+To create a single **folder** where the executeable Python program will be stored:
+
+`pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
