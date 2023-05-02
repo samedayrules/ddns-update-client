@@ -1,1 +1,1 @@
-# Same Day Rules Dynamic DNS Update Client
+# Dynamic DNS Update Client (DUC)
