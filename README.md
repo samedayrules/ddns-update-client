@@ -25,7 +25,7 @@ Developers seeking to install and extend the Same Day Rules DUC can follow the i
 To modify and run the DUC software, you must have:
 
 1. Python installed (version 3.11 used).
-2. Python virtual environment module installed (version xxx used).
+2. Python virtual environment module installed (version 20.17.1 used).
 3. Git installed (version 2.38.1 used).
 4. Access to a command shell (e.g., cmd.exe).
 
