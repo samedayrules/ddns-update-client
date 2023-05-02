@@ -25,20 +25,34 @@ Developers seeking to install and extend the Same Day Rules DUC can follow the i
 To modify and run the DUC software, you must have:
 
 1. Python installed (version 3.11 used).
-2. Git installed (version 2.38.1 used).
-3. Access to a command shell (e.g., cmd.exe).
+2. Python virtual environment module installed (version xxx used).
+3. Git installed (version 2.38.1 used).
+4. Access to a command shell (e.g., cmd.exe).
 
 The general process is:
 
 1. Open Windows command prompt.
-2. Clone the software repository.
-3. Make a Python virtual environment.
-4. Install the required Python modules.
-5. Run the software, either as-needed or upon startup each time you login.
+2. Change to your development directory.
+3. Clone the software repository.
+4. Make a Python virtual environment.
+5. Install the required Python modules.
+6. Run the software, either as-needed or upon startup each time you login.
 
-Assuming you have opened a Windows command prompt:
+Assuming you have opened a Windows command prompt and you have navigated to your development directory:
 
-`c:\users\myuser\mydir`
+`C:>git clone https://github.com/samedayrules/ddns_update_client.git`
+`C:>cd ddns_update_client`
+`C:>virtualenv venv`
+`C:>venv\Scripts\activate`
+'(venv) C:>pip install -r requirements.txt`
+
+You should have the most recent copy of the DUC software within the target virtual ebvironment on your machine.
+
+To run the software, simply execute the script:
+
+`(venv) C:>python ddnsupdate.pyw`
+
+The Python application does not create a console when executed, so you should not see one created when the program is launched.
 
 ## Using PyInstaller
 
