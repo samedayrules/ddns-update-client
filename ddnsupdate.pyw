@@ -19,6 +19,7 @@ information: https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-se
 TITLE = 'SDR DUC v1.0'
 
 CONFIG_FILENAME = 'ddnsupdate.cfg'
+ICON_FILENAME = 'favicon.ico'
 
 # Prevent Kivy leaving debug messages
 # https://stackoverflow.com/questions/50308757/prevent-kivy-leaving-debug-messages
@@ -27,11 +28,14 @@ os.environ['KIVY_NO_CONSOLELOG'] = '1'
 
 # How to change [Kivy] window size
 # https://stackoverflow.com/questions/14014955/kivy-how-to-change-window-size
+# Available configuration tokens
+# https://kivy.org/doc/stable/api-kivy.config.html?highlight=config#available-configuration-tokens
 from kivy import Config
 Config.set('graphics', 'fullscreen', '0')
 Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '680')
 Config.set('graphics', 'resizable', False)
+Config.set('kivy', 'window_icon', ICON_FILENAME)
 
 from kivy.lang import Builder
 from kivy.clock import Clock
