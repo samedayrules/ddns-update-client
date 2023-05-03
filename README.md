@@ -111,6 +111,6 @@ To create a single **folder** where the executeable Python program will be store
 
 `pyinstaller --onedir --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
-If changes are made to the `.spec` file, then run this afterwards:
+If manual changes are made to the `.spec` file, then run this afterwards:
 
 `pyinstaller ddnsupdate.spec`
