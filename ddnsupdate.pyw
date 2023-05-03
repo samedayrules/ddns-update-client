@@ -19,7 +19,7 @@ information: https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-se
 TITLE = 'SDR DUC v1.0'
 
 CONFIG_FILENAME = 'ddnsupdate.cfg'
-ICON_FILENAME = 'favicon.ico'
+ICON_FILENAME = 'favicon.16x16.ico'
 
 # Prevent Kivy leaving debug messages
 # https://stackoverflow.com/questions/50308757/prevent-kivy-leaving-debug-messages
