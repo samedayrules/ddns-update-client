@@ -394,6 +394,7 @@ class DDNSConfig():
 class MainGUI(MDApp):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.icon = ICON_FILENAME
         self.title = TITLE
         self.gui = None
         self.event = Clock.schedule_interval(self.update_server_status, 5.0)

@@ -1,6 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 # Fixes for Kivy
+import os
 from kivy_deps import sdl2, glew
 from kivymd import hooks_path as kivymd_hooks_path
 
@@ -23,7 +24,6 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
-
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
@@ -42,13 +42,15 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['favicon.ico'],
 )
-
 coll = COLLECT(
     exe,
+    Tree(path),
     a.binaries,
     a.zipfiles,
     a.datas,
+    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
     strip=False,
     upx=True,
     upx_exclude=[],
