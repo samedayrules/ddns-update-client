@@ -105,11 +105,11 @@ https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
 To produce a single executeable **file** that is decompressed and run in-place:
 
-`pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+`pyinstaller --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
 To create a single **folder** where the executeable Python program will be stored:
 
-`pyinstaller --onedir --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+`pyinstaller --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
 If manual changes are made to the `.spec` file, then run this afterwards:
 
