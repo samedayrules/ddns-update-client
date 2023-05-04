@@ -101,11 +101,13 @@ https://kivymd.readthedocs.io/en/0.104.1/unincluded/kivymd/tools/packaging/pyins
 
 https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
-### Command to Create Onefile Distrubution
+### Command to Create One File Distrubution
 
 To produce a single executeable **file** that is decompressed and run in-place:
 
 `pyinstaller --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+### Command to Create One Folder Distrubution
 
 To create a single **folder** where the executeable Python program will be stored:
 
