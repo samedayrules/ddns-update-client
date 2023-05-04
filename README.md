@@ -101,16 +101,48 @@ https://kivymd.readthedocs.io/en/0.104.1/unincluded/kivymd/tools/packaging/pyins
 
 https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
-### Command to Create Onefile Distrubution
+### Command to Create One File Distrubution
 
 To produce a single executeable **file** that is decompressed and run in-place:
 
-`pyinstaller --onefile --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+`pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+### Command to Create One Folder Distrubution
 
 To create a single **folder** where the executeable Python program will be stored:
 
-`pyinstaller --onedir --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+`pyinstaller --clean --log-level WARN --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+### Manual Changes Required for Kivy
 
 If manual changes are made to the `.spec` file, then run this afterwards:
 
 `pyinstaller ddnsupdate.spec`
+
+Add these lines if the `.spec` file is changed:
+
+ `-*- mode: python ; coding: utf-8 -*-`<br>
+<br>
+**`# Fixes for Kivy`<br>**
+**`import os`<br>**
+**`from kivy_deps import sdl2, glew`<br>**
+**`from kivymd import hooks_path as kivymd_hooks_path`<br>**
+**`path = os.path.abspath(".")`<br>**
+<br>
+`block_cipher = None`<br>
+
+`a = Analysis(`<br>
+`    ['ddnsupdate.pyw'],`<br>
+**`    pathex=[path],`<br>**
+`    binaries=[],`<br>
+`    datas=[('ddnsupdate.kv', '.')],`<br>
+`    hiddenimports=[],`<br>
+**`    hookspath=[kivymd_hooks_path],`<br>**
+
+`coll = COLLECT(`<br>
+`    exe,`<br>
+**`    Tree(path),`<br>**
+`    a.binaries,`<br>
+`    a.zipfiles,`<br>
+`    a.datas,`<br>
+**`    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],`<br>**
