@@ -119,11 +119,11 @@ Add these lines if the `.spec` file is changed:
 
  `-*- mode: python ; coding: utf-8 -*-`<br>
 <br>
-**`# Fixes for Kivy`<br>**
+**`# Fixes for Kivy`<br>
 `import os`<br>
 `from kivy_deps import sdl2, glew`<br>
 `from kivymd import hooks_path as kivymd_hooks_path`<br>
 <br>
 `path = os.path.abspath(".")`<br>
-<br>
+**<br>
 `block_cipher = None`<br>
