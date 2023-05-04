@@ -123,7 +123,6 @@ Add these lines if the `.spec` file is changed:
 **`import os`<br>**
 **`from kivy_deps import sdl2, glew`<br>**
 **`from kivymd import hooks_path as kivymd_hooks_path`<br>**
-<br>
-`path = os.path.abspath(".")`<br>
+**`path = os.path.abspath(".")`<br>**
 <br>
 `block_cipher = None`<br>
