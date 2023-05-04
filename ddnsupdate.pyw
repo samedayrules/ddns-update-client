@@ -48,7 +48,6 @@ import sys
 import base64
 import json
 import socket
-import string
 import requests
 import threading
 import ipaddress
@@ -169,8 +168,11 @@ RESERVED_IPS = ['144.208.66.36', '209.182.193.230', '192.249.114.148', '209.182.
 MAX_LABEL_LEN = 63
 MAX_DOMAIN_LEN = 255
 
-VALID_LABEL_CHARS = set(string.ascii_letters + string.digits + '-')
-VALID_USER_NAME_CHARS = set(string.ascii_letters + string.digits + '-' + '_')
+ASCII_LETTERS = 'abcedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+ASCII_DIGITS = '0123456789'
+
+VALID_LABEL_CHARS = set(ASCII_LETTERS + ASCII_DIGITS + '-')
+VALID_USER_NAME_CHARS = set(ASCII_LETTERS + ASCII_DIGITS + '-' + '_')
 
 def valid_label(label):
     # Ignoring upper/lower case chars
