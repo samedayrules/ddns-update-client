@@ -4,7 +4,6 @@
 import os
 from kivy_deps import sdl2, glew
 from kivymd import hooks_path as kivymd_hooks_path
-
 path = os.path.abspath(".")
 
 block_cipher = None
@@ -18,12 +17,13 @@ a = Analysis(
     hookspath=[kivymd_hooks_path],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['docutils'],
     win_no_prefer_redirects=False,
     win_private_assemblies=False,
     cipher=block_cipher,
     noarchive=False,
 )
+
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
 exe = EXE(
@@ -44,6 +44,7 @@ exe = EXE(
     entitlements_file=None,
     icon=['favicon.256x256.ico'],
 )
+
 coll = COLLECT(
     exe,
     Tree(path),
