@@ -135,3 +135,10 @@ Add these lines if the `.spec` file is changed:
 `    hiddenimports=[],`<br>
 **`    hookspath=[kivymd_hooks_path],`<br>**
 
+`coll = COLLECT(`<br>
+`    exe,`<br>
+**`    Tree(path),`<br>**
+`    a.binaries,`<br>
+`    a.zipfiles,`<br>
+`    a.datas,`<br>
+**`    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],`<br>**
