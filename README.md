@@ -126,3 +126,12 @@ Add these lines if the `.spec` file is changed:
 **`path = os.path.abspath(".")`<br>**
 <br>
 `block_cipher = None`<br>
+...
+`a = Analysis(`<br>
+`    ['ddnsupdate.pyw'],`<br>
+**`    pathex=[path],`<br>**
+`    binaries=[],`<br>
+`    datas=[('ddnsupdate.kv', '.')],`<br>
+`    hiddenimports=[],`<br>
+**`    hookspath=[kivymd_hooks_path],`<br>**
+...
