@@ -113,6 +113,8 @@ To create a single **folder** where the executeable Python program will be store
 
 `pyinstaller --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
+### Manual Changes Required for Kivy
+
 If manual changes are made to the `.spec` file, then run this afterwards:
 
 `pyinstaller ddnsupdate.spec`
