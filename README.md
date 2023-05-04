@@ -114,3 +114,16 @@ To create a single **folder** where the executeable Python program will be store
 If manual changes are made to the `.spec` file, then run this afterwards:
 
 `pyinstaller ddnsupdate.spec`
+
+Add these lines of the `.spec` file is changed:
+
+ `-*- mode: python ; coding: utf-8 -*-`<br>
+<br>
+`# Fixes for Kivy`<br>
+`import os`<br>
+`from kivy_deps import sdl2, glew`<br>
+`from kivymd import hooks_path as kivymd_hooks_path`<br>
+<br>
+`path = os.path.abspath(".")`<br>
+<br>
+`block_cipher = None`<br>
