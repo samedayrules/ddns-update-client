@@ -16,7 +16,7 @@ periodic updates. See the following Same Day Rules blog post for more
 information: https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-service/
 '''
 
-TITLE = 'SDR DUC v1.0'
+TITLE = 'SDR DUC v1.1'
 
 CONFIG_FILENAME = 'ddnsupdate.cfg'
 ICON_FILENAME = 'favicon.16x16.ico'
