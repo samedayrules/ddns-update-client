@@ -117,7 +117,7 @@ To create a single **folder** where the executeable Python program will be store
 
 If manual changes are made to the `.spec` file, then run this afterwards:
 
-`pyinstaller ddnsupdate.spec`
+`pyinstaller --log-level WARN ddnsupdate.spec`
 
 Add these lines if the `.spec` file is changed:
 
