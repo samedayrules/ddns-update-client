@@ -16,7 +16,7 @@ periodic updates. See the following Same Day Rules blog post for more
 information: https://samedayrules.com/using-a-dynamic-domain-name-system-ddns-service/
 '''
 
-TITLE = 'SDR DUC v1.1'
+TITLE = 'SDR DUC v1.2'
 
 CONFIG_FILENAME = 'ddnsupdate.cfg'
 ICON_FILENAME = 'favicon.16x16.ico'
@@ -24,7 +24,7 @@ ICON_FILENAME = 'favicon.16x16.ico'
 # Prevent Kivy leaving debug messages
 # https://stackoverflow.com/questions/50308757/prevent-kivy-leaving-debug-messages
 import os
-os.environ['KIVY_NO_CONSOLELOG'] = '1'
+#os.environ['KIVY_NO_CONSOLELOG'] = '1'
 
 # How to change [Kivy] window size
 # https://stackoverflow.com/questions/14014955/kivy-how-to-change-window-size
@@ -61,10 +61,15 @@ rgba = lambda x: x/255
 def my_local_ip():
     try:
         my_ip = socket.gethostbyname(socket.gethostname())
+        Logger.info('Local IP fetched: ' + str(my_ip) + '  ' + str(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
     except Exception as ex:
         my_ip = 'unknown'
         Logger.error('Exception getting my local IP address: ' + str(ex))
     return my_ip
+
+# Fetch local IP address
+# _stale IP address maintains local copy of the last fetched value
+my_local_ip_stale = my_local_ip()        
 
 # Query the outside world to retrieve the public-facing IP address of the machine
 def my_public_ip():
@@ -72,12 +77,17 @@ def my_public_ip():
         response = requests.get('https://samedayrules.net/myip')
         if response.status_code == 200:
             my_ip = str(response.text)
+            Logger.info('Public IP fetched: ' + str(my_ip) + '  ' + str(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
         else:
             my_ip = 'unknown'
     except Exception as ex:
         my_ip = 'unknown'
         Logger.error('Exception getting my public IP address: ' + str(ex))
     return my_ip
+
+# Fetch public IP address
+# _stale IP address maintains local copy of the last fetched value
+my_public_ip_stale = my_public_ip()
 
 # Generate the base-64 encoding of the user_name/access_key pair for the DDNS API
 def base64_encode(user_name, access_key):
@@ -100,6 +110,7 @@ class DDNSUpdateClient(threading.Thread):
         self.access_key = ''
         self.hostname = ''
         self.ip_address = ''
+        self.ip_address_type = 'public'
         self.update_period = DEF_UPDATE_PERIOD
         self.last_srv_update = datetime(1, 1, 1, 0, 0)
         self.last_srv_status = 'unknown'
@@ -111,7 +122,7 @@ class DDNSUpdateClient(threading.Thread):
     def stopped(self):
         return self.stop_event.is_set()
 
-    def configure(self, user_name, access_key, hostname, ip_address, update_period):
+    def configure(self, user_name, access_key, hostname, ip_address, ip_address_type, update_period):
         # Assume failure
         success = False
         # Parameters must have been validated - trusting values
@@ -121,6 +132,7 @@ class DDNSUpdateClient(threading.Thread):
             self.access_key = access_key
             self.hostname = hostname
             self.ip_address = ip_address
+            self.ip_address_type = ip_address_type
             self.update_period = update_period
             self.configured = True
             success = True
@@ -133,6 +145,14 @@ class DDNSUpdateClient(threading.Thread):
     def update(self):
         if self.configured:
             self.lock.acquire() # control access to public vars
+            # Update public/local IP addresses in case they've changed
+            # Copy Current IP addresses to stale counterparts
+            if self.ip_address_type == 'public':
+                self.ip_address = my_public_ip()
+                my_public_ip_stale = self.ip_address
+            elif self.ip_address_type == 'local':
+                self.ip_address = my_local_ip()
+                my_local_ip_stale = self.ip_address
             Logger.info('DDNS Update Client making request')
             try:
                 auth = base64_encode(self.user_name, self.access_key)
@@ -271,6 +291,16 @@ def valid_ip_address(ip, v4v6 = '?'):
         pass
     return False
 
+IP_ADDRESS_TYPES = ['public', 'local', 'other']
+
+def valid_ip_address_type(ip_address_type):
+    try:
+        if ip_address_type in IP_ADDRESS_TYPES:
+            return True
+    except:
+        pass
+    return False
+
 MIN_USER_NAME_SIZE = 5
 MAX_USER_NAME_SIZE = 60
 
@@ -313,6 +343,7 @@ class DDNSConfig():
         self.other_ip_address_active = False
         self.other_ip_address = ''
         self.ip_address = ''
+        self.ip_address_type = ''
         self.update_period = ''
         self.loaded = False
 
@@ -327,6 +358,7 @@ class DDNSConfig():
                 user_name = data.get('user_name')
                 access_key = data.get('access_key')
                 hostname = data.get('hostname')
+                ip_address_type = data.get('ip_address_type')
                 update_period = data.get('update_period')
                 other_ip_address = data.get('other_ip_address')
                 public_ip_active = data.get('public_ip_address_active')
@@ -344,6 +376,10 @@ class DDNSConfig():
                     self.hostname = hostname
                 else:
                     success = False
+                if valid_ip_address_type(ip_address_type):
+                    self.ip_address_type = ip_address_type
+                else:
+                    success = False
                 if valid_update_period(update_period):				
                     self.update_period = update_period
                 else:
@@ -351,10 +387,10 @@ class DDNSConfig():
                 # Handle IP address differently due to checkboxes
                 if public_ip_active:
                     self.public_ip_address_active = True
-                    self.ip_address = my_public_ip
+                    self.ip_address = my_public_ip_stale
                 elif local_ip_active:
                     self.local_ip_address_active = True
-                    self.ip_address = my_local_ip
+                    self.ip_address = my_local_ip_stale
                 elif other_ip_active:
                     if valid_ip_address(other_ip_address):
                         self.other_ip_address_active = True
@@ -379,6 +415,7 @@ class DDNSConfig():
                     "user_name": self.user_name,
                     "access_key": self.access_key,
                     "hostname": self.hostname,
+                    "ip_address_type": self.ip_address_type,
                     "update_period": self.update_period,
                     "other_ip_address": self.other_ip_address,
                     "public_ip_address_active": self.public_ip_address_active,
@@ -399,17 +436,18 @@ class MainGUI(MDApp):
         self.icon = ICON_FILENAME
         self.title = TITLE
         self.gui = None
-        self.event = Clock.schedule_interval(self.update_server_status, 5.0)
+        self.event = Clock.schedule_interval(self.update_dynamic_data, 5.0)
 
     def build(self):
+        # Create GUI object and set initial values of display elements
         self.theme_cls.theme_style='Light'
         self.gui = Builder.load_file('ddnsupdate.kv')
         self.gui.ids['user_name'].text = ddns_config.user_name
         self.gui.ids['access_key'].text = ddns_config.access_key
         self.gui.ids['hostname'].text = ddns_config.hostname
         self.gui.ids['update_period'].text = str(ddns_config.update_period)
-        self.gui.ids['public_ip_address'].text = my_public_ip
-        self.gui.ids['local_ip_address'].text = my_local_ip
+        self.gui.ids['public_ip_address'].text = my_public_ip_stale
+        self.gui.ids['local_ip_address'].text = my_local_ip_stale
         self.gui.ids['other_ip_address'].text = ddns_config.other_ip_address
         self.gui.ids['public_ip_address_active'].active = ddns_config.public_ip_address_active
         self.gui.ids['local_ip_address_active'].active = ddns_config.local_ip_address_active
@@ -417,9 +455,12 @@ class MainGUI(MDApp):
         self.gui.ids['apply_button'].on_press = self.apply_settings
         return self.gui
 
-    def update_server_status(self, dt = 5.0):
+    def update_dynamic_data(self, dt):
+        # Update display elements that are changed by DDNS service
         self.gui.ids['last_srv_update'].text = ddns_service.last_srv_update.strftime("%m/%d/%Y %H:%M:%S")
         self.gui.ids['last_srv_status'].text = ddns_service.last_srv_status
+        self.gui.ids['public_ip_address'].text = my_public_ip_stale
+        self.gui.ids['local_ip_address'].text = my_local_ip_stale
 
     def apply_settings(self):
         try:
@@ -433,12 +474,16 @@ class MainGUI(MDApp):
             # Determine which IP address is active
             if self.gui.ids['public_ip_address_active'].active:
                 ip_address = self.gui.ids['public_ip_address'].text
+                ip_address_type = 'public'
             elif self.gui.ids['local_ip_address_active'].active:
                 ip_address = self.gui.ids['local_ip_address'].text
+                ip_address_type = 'local'
             elif self.gui.ids['other_ip_address_active'].active:
                 ip_address = self.gui.ids['other_ip_address'].text
+                ip_address_type = 'other'
             else:
-                ip_address = my_public_ip
+                ip_address = my_public_ip_stale
+                ip_address_type = 'public'
             # Check for required fields
             if not user_name:
                 self.gui.ids['user_name'].helper_text = 'This field is required'
@@ -477,20 +522,30 @@ class MainGUI(MDApp):
                 self.gui.ids['update_period'].error = True
                 validates = False
             if validates:
-                if ddns_service.configure(user_name, access_key, hostname, ip_address, update_period):
+                if ddns_service.configure(
+                        user_name,
+                        access_key,
+                        hostname,
+                        ip_address,
+                        ip_address_type,
+                        update_period):
                     ddns_service.update()
-                    self.event = Clock.schedule_interval(self.update_server_status, update_period)
                     ddns_config.user_name = user_name
                     ddns_config.access_key = access_key
                     ddns_config.hostname = hostname
+                    ddns_config.ip_address_type = ip_address_type
                     ddns_config.update_period = update_period
                     ddns_config.other_ip_address = self.gui.ids['other_ip_address'].text
                     ddns_config.public_ip_address_active = self.gui.ids['public_ip_address_active'].active
                     ddns_config.local_ip_address_active = self.gui.ids['local_ip_address_active'].active
                     ddns_config.other_ip_address_active = self.gui.ids['other_ip_address_active'].active
                     ddns_config.save(CONFIG_FILENAME)
+                    self.event.cancel()
+                    self.event = Clock.schedule_interval(self.update_dynamic_data, update_period/2)
+                    self.update_dynamic_data(1)
         except:
             Logger.error('Exception applying settings')
+            raise
 
 if __name__ == '__main__':
     # Kivy: Bundling Data Files
@@ -500,9 +555,6 @@ if __name__ == '__main__':
     # Start update thread now
     ddns_service = DDNSUpdateClient()
     ddns_service.start()
-    # Fetch public and local IP addresses
-    my_public_ip = my_public_ip()
-    my_local_ip = my_local_ip()
     # Load configuration (if it exists)
     ddns_config = DDNSConfig()
     if ddns_config.load(CONFIG_FILENAME):
@@ -512,6 +564,7 @@ if __name__ == '__main__':
             ddns_config.access_key,
             ddns_config.hostname,
             ddns_config.ip_address,
+            ddns_config.ip_address_type,
             ddns_config.update_period)
         ddns_service.update()
     # Show the main GUI
