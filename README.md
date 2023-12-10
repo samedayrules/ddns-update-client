@@ -23,7 +23,8 @@ Developers seeking to install and extend the Same Day Rules DUC can follow the i
 ## Developer Notes
 Regarding the Python requirements:
 1. `kivy-deps.angle` is only required for Windows.
-
+2. `kivy-deps.angle` is only required for Windows.
+ 
 ## Windows: Downloading and Running the DUC
 
 To modify and run the DUC software, you must have:
