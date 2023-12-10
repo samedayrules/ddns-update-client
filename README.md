@@ -20,6 +20,10 @@ The Same Day Rules DUC is provided to end-users as a Python [KivyMD](https://kiv
 
 Developers seeking to install and extend the Same Day Rules DUC can follow the instructions below to clone and then run the DUC under different operating systems.
 
+## Developer Notes
+Regarding the Python requirements:
+1. `kivy-deps.angle` is only required for Windows.
+
 ## Windows: Downloading and Running the DUC
 
 To modify and run the DUC software, you must have:
