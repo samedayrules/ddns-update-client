@@ -105,7 +105,13 @@ https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
 To produce a single executeable **file** that is decompressed and run in-place:
 
+**Windows:**
+
 `pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+** Linux:**
+
+`pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv:." ddnsupdate.pyw`
 
 ### Command to Create One Folder Distrubution
 
