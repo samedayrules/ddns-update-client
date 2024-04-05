@@ -8,7 +8,7 @@ idna
 importlib-metadata
 Kivy
 Kivy-Garden
-kivymd
+https://github.com/kivymd/KivyMD/archive/master.zip
 opencv-python
 packaging
 pefile
