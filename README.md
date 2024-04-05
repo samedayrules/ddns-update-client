@@ -109,7 +109,7 @@ To produce a single executeable **file** that is decompressed and run in-place:
 
 `pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
 
-** Linux:**
+**Linux:**
 
 `pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv:." ddnsupdate.pyw`
 
@@ -117,7 +117,13 @@ To produce a single executeable **file** that is decompressed and run in-place:
 
 To create a single **folder** where the executeable Python program will be stored:
 
+**Windows:**
+
 `pyinstaller --clean --log-level WARN --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
+
+**Linux:**
+
+`pyinstaller --clean --log-level WARN --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv:." ddnsupdate.pyw`
 
 ### Manual Changes Required for Kivy
 
