@@ -9,6 +9,7 @@ importlib-metadata
 Kivy
 Kivy-Garden
 kivymd
+opencv-python
 packaging
 pefile
 Pillow
