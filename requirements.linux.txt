@@ -6,9 +6,9 @@ docutils
 filelock
 idna
 importlib-metadata
-Kivy
-Kivy-Garden
-https://github.com/kivymd/KivyMD/archive/master.zip
+Kivy==2.3.0
+Kivy-Garden==0.1.5
+KivyMD==1.2.0
 opencv-python
 packaging
 pefile
