@@ -1,13 +1,13 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+import os
+path = os.path.abspath(".")
+
 # Fixes for Kivy: Windows
 #from kivy_deps import sdl2, glew
 
 # Fixes for Kivy: All
 from kivymd import hooks_path as kivymd_hooks_path
-
-import os
-path = os.path.abspath(".")
 
 block_cipher = None
 
