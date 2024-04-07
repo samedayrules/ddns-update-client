@@ -1,9 +1,12 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-# Fixes for Kivy
-import os
-from kivy_deps import sdl2, glew
+# Fixes for Kivy: Windows
+#from kivy_deps import sdl2, glew
+
+# Fixes for Kivy: All
 from kivymd import hooks_path as kivymd_hooks_path
+
+import os
 path = os.path.abspath(".")
 
 block_cipher = None
@@ -29,13 +32,17 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
     name='ddnsupdate',
+    exclude_binaries=False,
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
@@ -45,15 +52,16 @@ exe = EXE(
     icon=['favicon.256x256.ico'],
 )
 
-coll = COLLECT(
-    exe,
-    Tree(path),
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name='ddnsupdate',
-)
+# For one folder
+#coll = COLLECT(
+#    exe,
+#    Tree(path),
+#    a.binaries,
+#    a.zipfiles,
+#    a.datas,
+#    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
+#    strip=False,
+#    upx=True,
+#    upx_exclude=[],
+#    name='ddnsupdate',
+#)
