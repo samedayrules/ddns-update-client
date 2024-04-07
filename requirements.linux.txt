@@ -16,5 +16,6 @@ Pillow
 platformdirs
 #psutil
 pygments
+pyinstaller
 requests
 urllib3
