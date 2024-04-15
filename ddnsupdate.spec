@@ -63,5 +63,5 @@ exe = EXE(
 #    strip=False,
 #    upx=True,
 #    upx_exclude=[],
-#    name='ddnsupdate',
+#    name='ddnsupdate_dir',
 #)
