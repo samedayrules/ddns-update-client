@@ -52,7 +52,7 @@ Under **Linux**, assuming you have opened a command prompt and you have navigate
 `user~$ cd ddns_update_client`<br>
 `user~$ python3 -m venv venv`<br>
 `user~$ source venv/bin/activate`<br>
-`user~$ pip install -r requirements.txt`
+`(venv) user~$ pip install -r requirements.txt`
 
 You should have the most recent copy of the DUC software within the target virtual environment on your machine.
 
