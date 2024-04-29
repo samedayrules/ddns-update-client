@@ -48,11 +48,11 @@ Under **Windows**, assuming you have opened a command prompt and you have naviga
 
 Under **Linux**, assuming you have opened a command prompt and you have navigated to your development directory:
 
-`user~$ git clone https://github.com/samedayrules/ddns_update_client.git`<br>
-`user~$ cd ddns_update_client`<br>
-`user~$ python3 -m venv venv`<br>
-`user~$ source venv/bin/activate`<br>
-`(venv) user~$ pip install -r requirements.txt`
+`user:~$ git clone https://github.com/samedayrules/ddns_update_client.git`<br>
+`user:~$ cd ddns_update_client`<br>
+`user:~$ python3 -m venv venv`<br>
+`user:~$ source venv/bin/activate`<br>
+`(venv) user:~$ pip install -r requirements.txt`
 
 You should have the most recent copy of the DUC software within the target virtual environment on your machine.
 
