@@ -20,7 +20,7 @@ The Same Day Rules DUC is provided to end-users as a Python [KivyMD](https://kiv
 
 Developers seeking to install and extend the Same Day Rules DUC can follow the instructions below to clone and then run the DUC under different operating systems.
 
-## Windows: Downloading and Running the DUC
+## Windows/Linux: Downloading and Running the DUC
 
 To modify and run the DUC software, you must have:
 
@@ -31,14 +31,14 @@ To modify and run the DUC software, you must have:
 
 The general process is:
 
-1. Open Windows command prompt.
+1. Open command prompt.
 2. Change to your development directory.
 3. Clone the software repository.
 4. Make a Python virtual environment.
 5. Install the required Python modules.
 6. Run the software, either as-needed or upon startup each time you login.
 
-Assuming you have opened a Windows command prompt and you have navigated to your development directory:
+Under **Windows**, assuming you have opened a command prompt and you have navigated to your development directory:
 
 `C:>git clone https://github.com/samedayrules/ddns_update_client.git`<br>
 `C:>cd ddns_update_client`<br>
@@ -46,11 +46,19 @@ Assuming you have opened a Windows command prompt and you have navigated to your
 `C:>venv\Scripts\activate`<br>
 `(venv) C:>pip install -r requirements.txt`
 
+Under **Linux**, assuming you have opened a command prompt and you have navigated to your development directory:
+
+`user~$ git clone https://github.com/samedayrules/ddns_update_client.git`<br>
+`user~$ cd ddns_update_client`<br>
+`user~$ python3 -m venv venv`<br>
+`user~$ source venv/bin/activate`<br>
+`user~$ pip install -r requirements.txt`
+
 You should have the most recent copy of the DUC software within the target virtual environment on your machine.
 
 To run the software, simply execute the script:
 
-`(venv) C:>python ddnsupdate.pyw`
+`python ddnsupdate.pyw`
 
 The Python DUC application does not output anything to the console window when executed nor does it create a console window when launched.
 
