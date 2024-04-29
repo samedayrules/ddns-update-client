@@ -101,29 +101,11 @@ https://kivymd.readthedocs.io/en/0.104.1/unincluded/kivymd/tools/packaging/pyins
 
 https://stackoverflow.com/questions/62019124/kivy-to-one-exe-cant-find-kv-file
 
-### Command to Create One File Distrubution
+### Command to Create One File and One Folder Distrubution
 
-To produce a single executeable **file** that is decompressed and run in-place:
+To produce a single executeable **file** that is decompressed and run in-place and to produce a single **folder** with all files needed for distribution:
 
-**Windows:**
-
-`pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
-
-**Linux:**
-
-`pyinstaller --clean --log-level WARN --onefile --icon favicon.256x256.ico --add-data "ddnsupdate.kv:." ddnsupdate.pyw`
-
-### Command to Create One Folder Distrubution
-
-To create a single **folder** where the executeable Python program will be stored:
-
-**Windows:**
-
-`pyinstaller --clean --log-level WARN --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv;." ddnsupdate.pyw`
-
-**Linux:**
-
-`pyinstaller --clean --log-level WARN --onedir --icon favicon.256x256.ico --add-data "ddnsupdate.kv:." ddnsupdate.pyw`
+`pyinstaller --clean --log-level WARN ddnsupdate.spec`
 
 ### Manual Changes Required for Kivy
 
